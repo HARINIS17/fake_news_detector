@@ -1,0 +1,388 @@
+/* 
+ * AI Fake News Detector - Minimal Newspaper Background
+ * Focus on content with visible newspaper background
+ */
+
+/* Simplified Newspaper Background */
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: 
+        /* Subtle red/black gradient */
+        linear-gradient(135deg, rgba(178, 34, 34, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%),
+        /* Main newspaper background image */
+        url('https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=2000&q=80');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    filter: brightness(0.7) contrast(1.1);
+    opacity: 0.9;
+}
+
+/* Remove the complex gallery grid */
+.newspaper-gallery {
+    display: none;
+}
+
+/* Simplified floating scraps */
+.newspaper-scraps {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0.3;
+}
+
+.newspaper-scrap {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.03);
+    width: 80px;
+    height: 80px;
+    border-radius: 2px;
+    transform: rotate(var(--rotation));
+    animation: floatScrap 40s linear infinite;
+    border: 1px solid rgba(255, 0, 0, 0.1);
+    filter: blur(0.5px);
+}
+
+.newspaper-scrap:nth-child(1) {
+    --rotation: -5deg;
+    top: 20%;
+    left: 10%;
+    animation-duration: 50s;
+}
+
+.newspaper-scrap:nth-child(2) {
+    --rotation: 8deg;
+    top: 70%;
+    right: 15%;
+    animation-duration: 60s;
+    animation-delay: -10s;
+}
+
+.newspaper-scrap:nth-child(3) {
+    --rotation: 12deg;
+    top: 80%;
+    left: 20%;
+    animation-duration: 70s;
+    animation-delay: -20s;
+}
+
+@keyframes floatScrap {
+    0% {
+        transform: translateY(100vh) rotate(var(--rotation));
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.2;
+    }
+    90% {
+        opacity: 0.2;
+    }
+    100% {
+        transform: translateY(-100px) rotate(calc(var(--rotation) + 20deg));
+        opacity: 0;
+    }
+}
+
+/* Simplify print dots */
+.print-dots {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(circle at 1px 1px, rgba(255, 0, 0, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    opacity: 0.2;
+}
+
+/* Make main container more transparent */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Simplify Header */
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    border-left: 4px solid #ff0000;
+    backdrop-filter: blur(5px);
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    background: linear-gradient(to right, #ff0000, #ff6b6b);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+.header p {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Simplify Detector Card - Make it more transparent */
+.detector-card {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+
+.detector-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Simplify Textarea */
+textarea {
+    width: 100%;
+    height: 200px;
+    padding: 15px;
+    border-radius: 8px;
+    border: 2px solid rgba(255, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    font-size: 16px;
+    resize: vertical;
+    outline: none;
+    transition: all 0.3s ease;
+    line-height: 1.5;
+    font-family: 'Georgia', 'Times New Roman', serif;
+}
+
+textarea:focus {
+    border-color: #ff0000;
+    box-shadow: 0 0 0 2px rgba(255, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.8);
+}
+
+/* Simplify Button */
+.analyze-btn {
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+    padding: 15px;
+    background: linear-gradient(to right, #ff0000, #8b0000);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.analyze-btn:hover {
+    background: linear-gradient(to right, #ff3333, #a30000);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
+}
+
+/* Simplify Result Container */
+.result-container {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 0, 0, 0.2);
+    text-align: center;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.result-container h3 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.result-content {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 15px 30px;
+    border-radius: 8px;
+    margin-top: 10px;
+    transition: all 0.5s;
+    display: inline-block;
+    backdrop-filter: blur(3px);
+}
+
+/* Real result - keep simple */
+.real {
+    color: #4CAF50;
+    background: rgba(76, 175, 80, 0.1);
+    border: 2px solid #4CAF50;
+}
+
+/* Fake result - keep simple */
+.fake {
+    color: #ff0000;
+    background: rgba(255, 0, 0, 0.1);
+    border: 2px solid #ff0000;
+}
+
+/* Simplify Stats */
+.stats-footer {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 0, 0, 0.2);
+}
+
+.stats {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.stat-item {
+    background: rgba(255, 0, 0, 0.1);
+    padding: 15px;
+    border-radius: 8px;
+    min-width: 140px;
+    border: 1px solid rgba(255, 0, 0, 0.2);
+}
+
+.stat-value {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #ff0000;
+    display: block;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Remove complex press effects */
+.press-effect,
+.paper-tear {
+    display: none;
+}
+
+/* Simplified loading */
+.loading {
+    display: none;
+    margin-top: 20px;
+}
+
+.loading span {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ff0000;
+    margin: 0 5px;
+    animation: loading 1.4s infinite ease-in-out both;
+}
+
+@keyframes loading {
+    0%, 100% { transform: scale(0); opacity: 0.5; }
+    40% { transform: scale(1); opacity: 1; }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+        margin-top: 10px;
+        background: rgba(0, 0, 0, 0.5);
+    }
+    
+    .header h1 {
+        font-size: 2rem;
+    }
+    
+    .detector-card, .result-container {
+        padding: 20px;
+    }
+    
+    .stats {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .stat-item {
+        width: 100%;
+        max-width: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding: 15px;
+    }
+    
+    .header h1 {
+        font-size: 1.6rem;
+    }
+    
+    textarea {
+        height: 180px;
+        padding: 12px;
+    }
+    
+    .result-content {
+        font-size: 1.3rem;
+        padding: 12px 20px;
+    }
+}
+
+/* Add some subtle texture to background */
+.background-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        repeating-linear-gradient(0deg, 
+            transparent, 
+            transparent 2px, 
+            rgba(0, 0, 0, 0.05) 2px, 
+            rgba(0, 0, 0, 0.05) 4px);
+    pointer-events: none;
+}

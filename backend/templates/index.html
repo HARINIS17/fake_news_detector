@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Fake News Detector</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+  <!-- Optional icons (looks cool in header/button) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<!-- Full animated background -->
+<div class="background-container">
+  <div class="newspaper-headlines"></div>
+  <div class="tear-effect"></div>
+
+  <!-- floating particles -->
+  <div class="newsprint-particle" style="width:4px;height:18px;left:10%;animation-duration:18s;"></div>
+  <div class="newsprint-particle" style="width:3px;height:14px;left:40%;animation-duration:22s;"></div>
+  <div class="newsprint-particle" style="width:5px;height:20px;left:70%;animation-duration:26s;"></div>
+</div>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <h1>AI Fake News Detector</h1>
+  </div>
+
+  <!-- DETECTOR CARD -->
+  <div class="detector-card">
+    <h2><i class="fas fa-newspaper"></i> Analyze News</h2>
+
+    <textarea id="news" placeholder="Paste the news article here..."></textarea>
+
+    <button class="analyze-btn" onclick="checkNews()">
+      <i class="fas fa-search"></i> Check News
+    </button>
+  </div>
+
+  <!-- RESULT -->
+  <div class="result-container">
+    <h3>Prediction Result</h3>
+    <div id="result" class="result-content">
+      Waiting for analysis...
+    </div>
+  </div>
+
+  <!-- FOOTER STATS (OPTIONAL BUT NICE) -->
+  <div class="stats-footer">
+    <p>AI-based Fake News Detection System</p>
+    <div class="stats">
+      <div class="stat-item">
+        <span class="stat-value">ML</span>
+        <span class="stat-label">Model</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value">NLP</span>
+        <span class="stat-label">Technique</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value">SDG 16</span>
+        <span class="stat-label">Goal</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- JS -->
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
